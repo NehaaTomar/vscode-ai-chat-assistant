@@ -9,11 +9,9 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
 
 ### 📺 Live Demo
 
-Watch the full walkthrough here:
+[![Watch the demo video](https://img.youtube.com/vi/lHGqj5WR-0I/hqdefault.jpg)](https://youtu.be/lHGqj5WR-0I)
 
 👉 [https://youtu.be/lHGqj5WR-0I](https://youtu.be/lHGqj5WR-0I)
-[![Watch the demo video](https://img.youtube.com/vi/lHGqj5WR-0I/maxresdefault.jpg)](https://youtu.be/lHGqj5WR-0I)
-
 ---
 
 ### ✨ Key Features
