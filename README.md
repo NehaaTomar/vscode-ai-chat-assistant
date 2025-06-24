@@ -10,7 +10,9 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
 ### 📺 Live Demo
 
 Watch the full walkthrough here:
+
 👉 [https://youtu.be/lHGqj5WR-0I](https://youtu.be/lHGqj5WR-0I)
+[![Watch the demo video](https://img.youtube.com/vi/lHGqj5WR-0I/maxresdefault.jpg)](https://youtu.be/lHGqj5WR-0I)
 
 ---
 
@@ -134,17 +136,21 @@ Watch the full walkthrough here:
 ---
 
 ### 🤝 Contributing & License
-
 * Feel free to submit issues or pull requests
-* Licensed under **MIT** — see `LICENSE` for details
+* This project is licensed under the MIT License.
+[MIT LICENSE](LICENSE)
 
 ---
 
 ### 📎 Author & Contact
-
 * **Neha Tomar**
-* GitHub: [@NehaaTomar](https://github.com/NehaaTomar)
 * Demo recorded using OBS Studio
 * Video link: [https://youtu.be/lHGqj5WR-0I](https://youtu.be/lHGqj5WR-0I)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-blue?style=for-the-badge)](https://inspiring-palmier-dd7dd4.netlify.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-NehaaTomar-black?style=for-the-badge&logo=github)](https://github.com/NehaaTomar)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Follow-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/neha-tomar-52b212224)
+[![Gmail](https://img.shields.io/badge/Gmail-MailMe-red?style=for-the-badge&logo=gmail)](mailto:nehatomar349@gmail.com)
+
+
 
 ---
