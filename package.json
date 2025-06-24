@@ -1,0 +1,55 @@
+{
+  "name": "vscode-ai-chat-extension",
+  "displayName": "AI Chat Assistant",
+  "description": "A VS Code extension with a React-based chat assistant using OpenAI API and file context from workspace.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+   "onCommand:aiChat.start"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiChat.start",
+        "title": "Start AI Chat"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "webpack --mode production",
+    "dev": "webpack --watch",
+    "clean": "rimraf ./dist",
+    "build": "npm run compile"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "openai": "^4.104.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.34",
+    "@types/react-dom": "^18.2.17",
+    "@types/vscode": "^1.85.0",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "package.json",
+    "webpack.config.js",
+    "tsconfig.json",
+    "README.md"
+  ]
+}
