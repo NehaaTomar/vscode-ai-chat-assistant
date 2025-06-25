@@ -1,9 +1,10 @@
 
+
 ---
 
 ## 🧠 AI Chat Assistant – VS Code Extension
 
-A smart, React-powered chat assistant built right inside Visual Studio Code. It understands your code context, supports file mentions via `@filename`, and can generate or manipulate code using natural language prompts. Works with real AI via OpenRouter or mocked responses for seamless demos.
+A smart, React-powered chat assistant built right inside Visual Studio Code. It understands your code context, supports file mentions via `@filename`, previews images or videos, and can generate or manipulate code using natural language prompts. Powered by **OpenRouter** and **Hugging Face BLIP** APIs – or mock data for demo.
 
 ---
 
@@ -12,16 +13,19 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
 [![Watch the demo video](https://img.youtube.com/vi/lHGqj5WR-0I/hqdefault.jpg)](https://youtu.be/lHGqj5WR-0I)
 
 👉 [https://youtu.be/lHGqj5WR-0I](https://youtu.be/lHGqj5WR-0I)
+
 ---
 
 ### ✨ Key Features
 
-* React-based WebView chat panel embedded in VS Code
-* Supports `@filename` syntax to fetch workspace file contents
-* Attach files/images using a 📎 button or `@mention`
-* Fetch AI responses via **OpenRouter (free)** or **OpenAI (paid)**
-* Clean UI with markdown & syntax-highlighted code blocks
-* Easily extendable and fully open-source
+* 🧠 AI-powered chat via **OpenRouter** (free) or OpenAI (paid)
+* 🖼️ Supports `@filename` to attach workspace files
+* 🌐 Recognizes and previews public image URLs (`@https://...jpg`)
+* 📎 Click-to-attach files with inline previews for images/videos
+* 📄 Inline previews for `.jpg`, `.png`, `.mp4`, fallback for `.pdf`, `.docx`, `.md`
+* 💬 Clean markdown rendering and code block formatting (` ``` `)
+* 🛡️ Safe file-size handling (1MB max)
+* 🧪 Mock fallback mode for demo without live API
 
 ---
 
@@ -30,9 +34,12 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
 * **Language:** TypeScript
 * **Backend:** VS Code Extension API + Node.js
 * **Frontend:** React (WebView)
-* **Bundling:** Webpack
-* **Environment:** dotenv for API key management
-* **AI Models:** OpenRouter’s LLaMA 3 / Mistral (free) or OpenAI GPT-3.5/4
+* **Bundler:** Webpack
+* **Environment:** dotenv for API keys
+* **AI Services:**
+
+  * Text: OpenRouter (Mistral / LLaMA)
+  * Image: Hugging Face BLIP for captioning
 
 ---
 
@@ -41,12 +48,12 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
 ```
 .
 ├── src/
-│   ├── extension.ts          # VS Code backend (handles chat and file mentions)
+│   ├── extension.ts          # VS Code backend (handles chat, file parsing)
 │   └── webview/
 │       ├── main.tsx          # React entry for WebView
-│       └── App.tsx           # Chat UI component
-├── dist/                     # Compiled code (extension bundled)
-├── .env                      # Add your API key here
+│       └── App.tsx           # Chat UI (file mentions, rendering)
+├── dist/                     # Compiled extension assets
+├── .env                      # API keys (not committed)
 ├── package.json
 ├── webpack.config.js
 └── README.md
@@ -64,18 +71,11 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
    npm install
    ```
 
-2. **Add your API key**
+2. **Add your API keys to `.env`**
 
-   * For **OpenRouter** (free):
-
-     ```
-     OPENAI_API_KEY=sk-or-...
-     ```
-   * For **OpenAI** (paid):
-
-     ```
-     OPENAI_API_KEY=sk-...
-     ```
+   ```
+   OPENROUTER_API_KEY=sk-or-your-openrouter-key
+   ```
 
 3. **Build the extension**
 
@@ -83,72 +83,82 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
    npm run build
    ```
 
-4. **Run in VS Code**
+4. **Run inside VS Code**
 
-   * Open the project in VS Code
-   * Press `F5` to launch the Extension Development Host
-   * Execute the `Start AI Chat` command from the command palette
-
-5. **Start chatting!**
-
-   * Ask questions like `python code for addition`
-   * Use `@filename.py` to fetch and embed file contents
-   * Use the 📎 button to attach files manually
+   * Open the project folder in VS Code
+   * Press `F5` to open the Extension Development Host
+   * From the Command Palette, run: `Start AI Chat`
 
 ---
 
-### 🎯 Why It Matters
+### 🧪 Usage Examples
 
-* 🚀 Showcases combining frontend (React) + backend (TypeScript) + AI in a real developer tool
-* 📂 Demonstrates practical workspace integration (file mentions)
-* 🤖 Future-ready: plugs into real AI APIs or uses mock/fallback modes
-* 🎥 Ideal for portfolio/interview demos (see the video linked above)
-
----
-
-### 📚 Usage & Examples
-
-1. **Make code requests**
+1. **Ask for code**
 
    ```
-   python code for addition
+   write python code for prime number
    ```
 
-2. **Reverse a string**
-
-   ```
-   reverse a string
-   ```
-
-3. **Embed a file**
+2. **Attach a workspace file**
 
    ```
    @example.py
    ```
 
-   – or click 📎 to attach it manually
+3. **Link a public image**
 
-4. **Get AI-generated responses**
-   Works instantly for demo mode; requires a valid API key for live usage
+   ```
+   @https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg
+   ```
+
+4. **Get caption from local image file**
+
+   * Click 📎 or type `@check.jpg` if the file is in workspace
+
+5. **Embed file content or fallback**
+
+   * `.jpg`, `.png` → Image preview + caption
+   * `.mp4` → Video player
+   * `.pdf`, `.md`, `.docx` → Shown as non-previewable file
+   * Code/text files → Shown inside triple backticks (\`\`\`) with syntax highlight
+
+---
+
+### ⚠️ Known Limits
+
+* Max file size: 1MB
+* Non-image/video/doc files get embedded as text (first 5000 chars)
+* Public Google redirect image URLs (`imgres?imgurl=...`) are parsed to real image URLs internally
+
+---
+
+### 🎯 Why Use This?
+
+* 📦 Combines full-stack extension (VS Code + React + AI APIs)
+* 💼 Great portfolio project – deployable or mock-demo friendly
+* 🔍 Shows real-time file integration with AI reasoning
+* 🖼️ Includes free Hugging Face BLIP image-to-text captions
+* 🔧 Easy to extend with your own models or APIs
 
 ---
 
 ### 🤝 Contributing & License
-* Feel free to submit issues or pull requests
-* This project is licensed under the MIT License.
-[MIT LICENSE](LICENSE)
+
+* Issues and PRs welcome!
+* Licensed under MIT
+  [MIT LICENSE](LICENSE)
 
 ---
 
-### 📎 Author & Contact
+### 🙋 Author & Contact
+
 * **Neha Tomar**
-* Demo recorded using OBS Studio
-* Video link: [https://youtu.be/lHGqj5WR-0I](https://youtu.be/lHGqj5WR-0I)
-* [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-blue?style=for-the-badge)](https://inspiring-palmier-dd7dd4.netlify.app/)
-* [![GitHub](https://img.shields.io/badge/GitHub-NehaaTomar-black?style=for-the-badge&logo=github)](https://github.com/NehaaTomar)
-* [![LinkedIn](https://img.shields.io/badge/LinkedIn-Follow-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/neha-tomar-52b212224)
-* [![Gmail](https://img.shields.io/badge/Gmail-MailMe-red?style=for-the-badge&logo=gmail)](mailto:nehatomar349@gmail.com)
-
-
+* 📹 Demo recorded with OBS Studio
+* [📺 Demo Video](https://youtu.be/lHGqj5WR-0I)
+* [🌐 Portfolio](https://inspiring-palmier-dd7dd4.netlify.app/)
+* [![GitHub](https://img.shields.io/badge/GitHub-NehaaTomar-black?style=for-the-badge\&logo=github)](https://github.com/NehaaTomar)
+* [![LinkedIn](https://img.shields.io/badge/LinkedIn-Follow-blue?style=for-the-badge\&logo=linkedin)](https://www.linkedin.com/in/neha-tomar-52b212224)
+* [![Gmail](https://img.shields.io/badge/Gmail-MailMe-red?style=for-the-badge\&logo=gmail)](mailto:nehatomar349@gmail.com)
 
 ---
+
