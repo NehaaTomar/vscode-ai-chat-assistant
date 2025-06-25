@@ -4,7 +4,7 @@
 
 ## 🧠 AI Chat Assistant – VS Code Extension
 
-A smart, React-powered chat assistant built right inside Visual Studio Code. It understands your code context, supports file mentions via `@filename`, previews images or videos, and can generate or manipulate code using natural language prompts. Powered by **OpenRouter** and **Hugging Face BLIP** APIs – or mock data for demo.
+A smart, React-powered chat assistant built right inside Visual Studio Code. It understands your code context, supports file mentions via `@filename`, previews images or videos, and can generate or manipulate code using natural language prompts. Powered by **OpenRouter** and **Hugging Face BLIP** APIs.
 
 ---
 
@@ -25,7 +25,6 @@ A smart, React-powered chat assistant built right inside Visual Studio Code. It 
 * 📄 Inline previews for `.jpg`, `.png`, `.mp4`, fallback for `.pdf`, `.docx`, `.md`
 * 💬 Clean markdown rendering and code block formatting (` ``` `)
 * 🛡️ Safe file-size handling (1MB max)
-* 🧪 Mock fallback mode for demo without live API
 
 ---
 
